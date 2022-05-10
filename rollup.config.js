@@ -18,12 +18,12 @@ const config = {
     dir: distDirectory,
   },
   plugins: [
-    nodeResolve({
-      browser: true,
-    }),
     commonjs({
       include: [/node_modules/, /fake_node_module/],
       dynamicRequireTargets: ['fake_node_module/foo/**.css'],
+    }),
+    nodeResolve({
+      browser: true,
     }),
     babel({
       exclude: 'node_modules/**',
