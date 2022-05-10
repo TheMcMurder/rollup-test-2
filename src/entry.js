@@ -10,3 +10,7 @@ if (process.env.THEME_DARK) {
 if (process.env.THEME_LIGHT) {
   main.innerHTML = "<div>THEME LIGHT</div>"
 }
+
+if(!process.env.THEME_DARK && !process.env.THEME_LIGHT) {
+  main.innerHTML = "<div>Default theme</div>"
+}
