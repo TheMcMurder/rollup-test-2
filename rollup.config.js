@@ -25,7 +25,6 @@ const config = {
     }),
     commonjs({
       include: [/node_modules/, /fake_node_module/],
-      dynamicRequireTargets: ['fake_node_module/foo/**.css'],
     }),
     nodeResolve({
       browser: true,
