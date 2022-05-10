@@ -16,15 +16,17 @@ const config = {
   input: `./src/entry`,
   output: {
     dir: distDirectory,
-    format: 'iife',
   },
   plugins: [
     nodeResolve({
       browser: true,
     }),
-    commonjs({include: [/node_modules/, /fake_node_module/]}),
+    commonjs({
+      include: [/node_modules/, /fake_node_module/],
+      dynamicRequireTargets: ['fake_node_module/foo/**.css'],
+    }),
     babel({
-      exclude: ['node_modules/**', `fake_node_module/**`],
+      exclude: 'node_modules/**',
     }),
     emitEJS({
       src: 'src',
