@@ -18,6 +18,11 @@ const config = {
     dir: distDirectory,
   },
   plugins: [
+    replace({
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+      'process.env.THEME_DARK': "true",
+      'process.env.THEME_LIGHT': "false",
+    }),
     commonjs({
       include: [/node_modules/, /fake_node_module/],
       dynamicRequireTargets: ['fake_node_module/foo/**.css'],
@@ -30,11 +35,6 @@ const config = {
     }),
     emitEJS({
       src: 'src',
-    }),
-    replace({
-      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
-      'process.env.THEME_DARK': "true",
-      'process.env.THEME_LIGHT': "false",
     }),
     postcss({
       extensions: ['.css'],
